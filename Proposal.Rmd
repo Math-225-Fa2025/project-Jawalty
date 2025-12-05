@@ -10,7 +10,7 @@ library(openintro)
 
 # Load the data
 write.csv(loans_full_schema, "data/loans_data.csv", row.names = FALSE)
-
+loans_data <- read.csv("data/loans_data.csv")
 ```
 ```{r glimpse-data}
 glimpse(loans_data)
@@ -35,7 +35,7 @@ The dataset contains `r nrow(loans_data)` observations and `r ncol(loans_data)` 
 - `term` - Loan term length (categorical: 36 or 60 months)
 
 ### Comparison Groups
-[If applicable - for example: "We will compare loans with different grades (A vs B vs C, etc.) to see how grade affects interest rate"]
+[We will compare loans with different grades (A vs B vs C, etc.) to see how grade affects interest rate]
 
 ### Preliminary Exploratory Data Analysis
 ```{r summary-stats}
@@ -61,8 +61,8 @@ ggplot(loans_data, aes(x = grade, y = interest_rate)) +
 ```
 
 **Insights from EDA:**
-- [Describe what you observe - e.g., "Interest rates range from X% to Y%, with a median of Z%"]
-- [Note any patterns - e.g., "Higher loan grades (A, B) tend to have lower interest rates"]
+- [There is a clear spread of interest rates, with the highest counts ranging between 5% and 13%]
+- [Higher loan grades have a linear pattern of lower interests rates compared to lower loan grades]
 
 ### Proposed Methods
 
@@ -76,7 +76,7 @@ ggplot(loans_data, aes(x = grade, y = interest_rate)) +
 
 ### Expected Results to Support Hypothesis
 
-To support our hypothesis [state your hypothesis], we would need:
+To support our hypothesis [Buyers with higher incomes, shorter loan terms, and highers credit scores will have lower average interest rates.], we would need:
 - Statistically significant coefficients (p < 0.05) for our key predictors
 -  A negative coefficient for annual_income, suggesting higher income leads to lower rates
 -  Significant differences between loan grades in ANOVA test
