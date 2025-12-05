@@ -20,7 +20,7 @@ This dataset comes from the `openintro` package, specifically the `loans_full_sc
 | state | Borrower's state |
 | annual_income | Borrower's annual income |
 | ... | ... |
-### data purpose/description
+### Data purpose/description
 This data represents a widespread issue of loans with determining factors 
 such as annual income, loan grade and term, as well as interest rates. 
 I am using the data to see how these variables affect interest rates, and
