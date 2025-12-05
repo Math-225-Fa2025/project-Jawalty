@@ -7,7 +7,7 @@ This dataset comes from the `openintro` package, specifically the `loans_full_sc
 
 ### Dimensions
 - Rows: 10,000 loans
-- Columns: [number of columns - run `ncol(loans_full_schema)` to find out]
+- Columns: [number of columns - run `ncol(loans_full_schema)` to find out] [55]
 
 ### Codebook (Data Dictionary)
 
@@ -20,4 +20,8 @@ This dataset comes from the `openintro` package, specifically the `loans_full_sc
 | state | Borrower's state |
 | annual_income | Borrower's annual income |
 | ... | ... |
-# project-template
+### data purpose/description
+This data represents a widespread issue of loans with determining factors 
+such as annual income, loan grade and term, as well as interest rates. 
+I am using the data to see how these variables affect interest rates, and
+what patterns there are to takeaway.
