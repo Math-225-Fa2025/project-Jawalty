@@ -1,0 +1,83 @@
+---
+title: "Proposal"
+output: html_document
+---
+
+## Section 2 - Data
+```{r load-data, message=FALSE}
+library(tidyverse)
+library(openintro)
+
+# Load the data
+write.csv(loans_full_schema, "data/loans_data.csv", row.names = FALSE)
+
+```
+```{r glimpse-data}
+glimpse(loans_data)
+```
+
+The dataset contains `r nrow(loans_data)` observations and `r ncol(loans_data)` variables.
+
+## Section 3 - Data Analysis Plan
+
+### Research Question
+[What factors contribute the most to a borrowers interest rate?]
+
+### Variables
+
+**Outcome variable (Y):**
+- `interest_rate` - The interest rate assigned to the loan (continuous, numeric)
+
+**Predictor variables (X):**
+- `loan_amount` - Amount borrowed (continuous)
+- `annual_income` - Borrower's income (continuous)
+- `grade` - Loan grade (categorical: A, B, C, D, E, F, G)
+- `term` - Loan term length (categorical: 36 or 60 months)
+
+### Comparison Groups
+[If applicable - for example: "We will compare loans with different grades (A vs B vs C, etc.) to see how grade affects interest rate"]
+
+### Preliminary Exploratory Data Analysis
+```{r summary-stats}
+# Summary statistics for key variables
+loans_data %>%
+  select(interest_rate, loan_amount, annual_income) %>%
+  summary()
+```
+```{r visualizations}
+# Distribution of interest rates
+ggplot(loans_data, aes(x = interest_rate)) +
+  geom_histogram(bins = 30, fill = "steelblue") +
+  labs(title = "Distribution of Interest Rates",
+       x = "Interest Rate (%)",
+       y = "Count")
+
+# Relationship between loan grade and interest rate
+ggplot(loans_data, aes(x = grade, y = interest_rate)) +
+  geom_boxplot(fill = "steelblue") +
+  labs(title = "Interest Rate by Loan Grade",
+       x = "Loan Grade",
+       y = "Interest Rate (%)")
+```
+
+**Insights from EDA:**
+- [Describe what you observe - e.g., "Interest rates range from X% to Y%, with a median of Z%"]
+- [Note any patterns - e.g., "Higher loan grades (A, B) tend to have lower interest rates"]
+
+### Proposed Methods
+
+**Primary method:** Multiple linear regression
+- Model interest rate as a function of loan amount, income, grade, and term
+- This will allow us to see which factors most strongly predict interest rates
+
+**Secondary methods:**
+- ANOVA to compare interest rates across loan grades
+- Correlation analysis between numeric variables
+
+### Expected Results to Support Hypothesis
+
+To support our hypothesis [state your hypothesis], we would need:
+- Statistically significant coefficients (p < 0.05) for our key predictors
+-  A negative coefficient for annual_income, suggesting higher income leads to lower rates
+-  Significant differences between loan grades in ANOVA test
+- Model with reasonable R² value indicating good fit

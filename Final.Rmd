@@ -1,0 +1,31 @@
+---
+title: "Final"
+author: "Jackson Walterman"
+output: 
+ # tufte::tufte_html:
+  #  css: ../lab.css
+  #  tufte_variant: "envisioned"
+   # highlight: pygments
+  tufte::tufte_handout:
+    latex_engine: xelatex
+    highlight: pygments
+    keep_tex: true
+    citation_package: natbib
+link-citations: true
+---
+```{r library}
+library(openintro)
+library(tidyverse)
+```
+
+```{r load-data}
+data(loans_full_schema)
+```
+
+```{r load to data}
+write.csv(loans_full_schema, "data/loans_data.csv", row.names = FALSE)
+
+list.files("data")
+
+glimpse(loans_full_schema)
+```
